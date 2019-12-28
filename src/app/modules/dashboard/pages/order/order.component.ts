@@ -2,7 +2,7 @@ import { Router } from "@angular/router";
 import { Order } from "./../../../../models/order";
 import { OrderService } from "./../../../../services/Order.service";
 import { Component, OnInit } from "@angular/core";
-
+declare var $;
 @Component({
   selector: "app-order",
   templateUrl: "./order.component.html",
@@ -12,6 +12,11 @@ export class OrderComponent implements OnInit {
   constructor(private orderSV: OrderService, private router: Router) {}
   ngOnInit() {
     this.getOrders();
+    setTimeout(function() {
+      $(() => {
+        $("#example1").DataTable({});
+      });
+    }, 400);
   }
   Orders: Order[] = [];
   getOrders() {

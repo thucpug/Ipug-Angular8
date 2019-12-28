@@ -1,3 +1,6 @@
+import { AuthGuard } from "./modules/login/auth.guard";
+import { AuthService } from "./services/auth/auth/auth.service";
+import { JwtService } from "./services/auth/jwt/jwt.service";
 import { OrderService } from "./services/Order.service";
 import { FileService } from "./services/File.service";
 import { ProductCaregoryService } from "./services/ProductCaregory.service";
@@ -12,7 +15,8 @@ import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { Page403Component } from "./modules/page403/page403.component";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { TokenInterceptor } from './services/auth/jwt/Token.interceptor';
 
 @NgModule({
   declarations: [AppComponent, Page403Component],
@@ -28,7 +32,15 @@ import { HttpClientModule } from "@angular/common/http";
     ProductService,
     ProductCaregoryService,
     FileService,
-    OrderService
+    OrderService,
+    JwtService,
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

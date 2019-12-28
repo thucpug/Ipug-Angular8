@@ -11,5 +11,6 @@ export class Order implements base {
   mobile: string;
   message: string;
   paymentMethod: string;
+  createDate: Date;
   products: orderDetail[];
 }

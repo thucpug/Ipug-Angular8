@@ -273,7 +273,7 @@
               class="user-image"
               alt="image"
             />
-            <span class="hidden-xs">Alexander Pierce</span>
+            <span class="hidden-xs">{{nameUser | uppercase }}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -285,7 +285,7 @@
               />
 
               <p>
-                Alexander Pierce - Web Developer
+               {{nameUser | uppercase }} - Web Developer
                 <small>Member since Nov. 2012</small>
               </p>
             </li>
@@ -310,7 +310,7 @@
                 <a href="#" class="btn btn-default btn-flat">Profile</a>
               </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <a  class="btn btn-default btn-flat" (click)="onSignOut()">Sign out</a>
               </div>
             </li>
           </ul>

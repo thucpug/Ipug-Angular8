@@ -14,7 +14,7 @@
 
 <section class="content">
   <div class="row">
-    <div class="col-xs-8">
+    <div class="col-xs-12">
       <!-- /.box -->
 
       <div class="box">
@@ -23,13 +23,17 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="tableProductCategory" class="table table-bordered table-striped">
+          <table
+            id="tableProductCategory"
+            class="table table-bordered table-striped"
+          >
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Create By</th>
+                <th>Avatar</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -40,6 +44,7 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.createBy }}</td>
+                <td><img class="imgbook" src="{{ product.avatar }}" /></td>
                 <td [ngSwitch]="product.status">
                   <div *ngSwitchCase="true">
                     <label class="label label-success">Active</label>
@@ -80,6 +85,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Create By</th>
+                <th>Avatar</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>

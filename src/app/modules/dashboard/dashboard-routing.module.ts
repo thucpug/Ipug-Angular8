@@ -1,3 +1,4 @@
+import { AuthGuard } from "./../login/auth.guard";
 import { UseritemComponent } from "./pages/user/useritem/useritem.component";
 import { UserComponent } from "./../../modules/dashboard/pages/user/user.component";
 import { OrderitemComponent } from "./../../modules/dashboard/pages/order/orderitem/orderitem.component";
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: "dashboard",
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: "", component: HomeComponent },
       {

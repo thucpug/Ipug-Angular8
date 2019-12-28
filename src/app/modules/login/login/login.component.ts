@@ -1,3 +1,6 @@
+import { JwtService } from "./../../../services/auth/jwt/jwt.service";
+import { AuthService } from "./../../../services/auth/auth/auth.service";
+import { User } from "src/app/models/user";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 declare var $;
@@ -7,8 +10,12 @@ declare var $;
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
-
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private jwt: JwtService
+  ) {}
+  user = new User();
   ngOnInit() {
     $(() => {
       $("input").iCheck({
@@ -19,6 +26,18 @@ export class LoginComponent implements OnInit {
     });
   }
   onLogin() {
-    this.router.navigate(["dashboard"]);
+    console.log("sdfsdf");
+
+    if (this.user) {
+      if (this.user.userName.trim() == "admin") {
+        this.auth.login(JSON.stringify(this.user)).subscribe(
+          data => {
+            this.jwt.saveJWT(data.data.accessToken);
+            this.router.navigate(["dashboard"]);
+          },
+          err => alert("UserName or Password Wrong!")
+        );
+      }
+    }
   }
 }

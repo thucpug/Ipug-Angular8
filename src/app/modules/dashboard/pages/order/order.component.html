@@ -36,6 +36,7 @@
                 <th>Payment Method</th>
                 <th>Buyer</th>
                 <th>Products</th>
+                <th>Day Buy</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -60,6 +61,7 @@
                     ><br /><b>Quatity: {{ item.quantity }}</b>
                   </li>
                 </td>
+                <td>{{ order.createDate | date: "dd-MMM-yy h:mm:ss a " }}</td>
                 <td [ngSwitch]="order.status">
                   <div *ngSwitchCase="true">
                     <label class="label label-success">Active</label>
@@ -99,6 +101,7 @@
                 <th>Payment Method</th>
                 <th>Buyer</th>
                 <th>Products</th>
+                <th>Day Buy</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
